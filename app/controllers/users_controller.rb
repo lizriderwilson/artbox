@@ -9,8 +9,8 @@ class UsersController < ApplicationController
         redirect to '/users/:id'
     end
 
-    get '/users/:id' do
-        @user = User.find(params[:id])
+    get '/users/:slug' do
+        @user = User.all.find_by_slug(params[:slug])
         erb :"users/show"
     end
 
