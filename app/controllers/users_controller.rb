@@ -6,7 +6,12 @@ class UsersController < ApplicationController
 
     post '/signup' do
         "My username is #{params[:username]} and my email is #{params[:email]}"
-        # erb :"users/show"
+        redirect to '/users/:id'
+    end
+
+    get '/users/:id' do
+        @user = User.find(params[:id])
+        erb :"users/show"
     end
 
 end
