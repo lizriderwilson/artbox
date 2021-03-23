@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     set :method_override, true
     enable :sessions
-    set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
+    set :session_secret, "hello" #ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
   end
 
   get "/" do
@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
 
   helpers do 
     def current_user 
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end 
 
     def logged_in? 
