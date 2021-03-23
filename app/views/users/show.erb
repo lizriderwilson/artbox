@@ -1,3 +1,7 @@
 <h1>Profile</h1>
 
-<%= User.find(params[:id]).username %>
+<%= @user.username %>
+
+<% if @user == current_user %>
+    <a href="">Log Out</a>
+<% end %>

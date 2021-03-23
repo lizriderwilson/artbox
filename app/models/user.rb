@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
     has_many :categories, through: :supplies
 
     has_secure_password
+
+    validates :username, presence: true, uniqueness: true
 end

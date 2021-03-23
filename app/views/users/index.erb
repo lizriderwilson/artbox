@@ -1,7 +1,24 @@
-<h1>Recent Users</h1>
+<h1 class="is-size-1">Recent Users</h1>
 
-<ul>
+
+
+
 <% User.all.each do |user| %>
-    <li><%= user.username %></li>
+<article class="media has-background-primary-light">
+    <figure class="media-left">
+        <span class="icon">
+            <i class="fas fa-home"></i>
+        </span>
+    </figure>
+    <div class="media-content">
+        <div class="content">
+            <p><%= user.username %></p>
+        </div>
+    </div>
+    <div class="media-right">
+        <div class="content">
+            <p><%= user.supplies.count %></p>
+        </div>
+    </div>
+</article>
 <% end %>
-</ul>
