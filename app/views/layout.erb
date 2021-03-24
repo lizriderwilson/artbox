@@ -16,8 +16,10 @@
 
         <nav class="navbar has-shadow is-white" role="navigation" aria-label="main navigation">
             <div class="container">
-                <div class="navbar-brand">
-                    <h1 class="navbar-item is-size-3 has-text-weight-bold">ArtBox</h1>
+                <div class="navbar-brand py-4">
+                    <a class="navbar-item" href="/">
+                    <img src="images/ArtBoxLogo.png" alt="ArtBox Site Logo" style="max-height: 40px">
+                    </a>
                 </div>
                 <div class="navbar-menu">
                     <div class="navbar-start ml-4">
@@ -26,8 +28,12 @@
                     </div>
 
                     <div class="navbar-end">
-                        <a class="navbar-item">Login</a>
-                        <a class="navbar-item">Sign Up</a>
+                        <% if current_user %>
+                            <a class="navbar-item" href="/logout">Log Out</a>
+                        <% else %>
+                            <a class="navbar-item" href="/login">Login</a>
+                            <a class="navbar-item" href="/signup">Sign Up</a>
+                        <% end %>
                     </div>
                 </div>
                         </nav>

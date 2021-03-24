@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
         @user = User.find_by(username: params[:user][:username])
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id
-            binding.pry
             redirect to "/supplies"
         else
             redirect to '/login'
@@ -21,7 +20,7 @@ class SessionsController < ApplicationController
 
     get "/logout" do 
         session.destroy 
-        redirect to "/login"
+        redirect to "/"
     end 
 
 end

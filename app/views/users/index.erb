@@ -1,6 +1,24 @@
-<h1 class="is-size-1">Recent Users</h1>
+<div class="container pt-6">
+    <h2 class="is-size-3 has-text-weight-semibold">Recent Users</h2>
 
-
+    <section class="section">
+        <table class="table">
+            <tbody>
+            <% User.all.each do |user| %>
+                <tr>
+                    <td>
+                        <a class="has-text-grey" href="/users/<%= user.id %>"><%= user.username %></a>
+                    </td>
+                    <td>
+                        <p><%= user.supplies.count %></p>
+                    </td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </section>
+    
+</div>
 
 
 <% User.all.each do |user| %>
@@ -12,7 +30,7 @@
     </figure>
     <div class="media-content">
         <div class="content">
-            <p><%= user.username %></p>
+            <a class="has-text-grey" href="/users/<%= user.id %>"><%= user.username %></a>
         </div>
     </div>
     <div class="media-right">

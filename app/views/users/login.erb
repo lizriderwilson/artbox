@@ -1,8 +1,40 @@
-<h1 class="is-size-1">Login</h1>
+<div class="container pt-6">
+		<h2 class="title">Login</h2>
 
-<form action="/login" method="POST">
-    <label for="username">Username:</label> <input type="text" name="user[username]" id="username"></br>
-    <label for="password">Password:</label> <input type="password" name="user[password]" id="password"></br></br>
+		<div class="columns pt-4">
+			<div class="column p-5 is-8-tablet is-half-desktop is-primary has-background-primary-light box">
 
-    <input type="submit" value="Login">
-</form>
+				<!-- FORM -->
+				<form action="/login" method="POST">
+
+					<!-- username -->
+					<div class="field">
+						<label class="label" for="username">Username:</label>
+						<div class="control has-icons-left">
+							<input class="input" type="text" name="user[username]" id="username">
+							<span class="icon is-small is-left">
+								<i class="fas fa-user"></i>
+							</span>
+						</div>
+					</div>
+
+					<!-- password -->
+
+					<div class="field">
+						<label class="label" for="password">Password:</label>
+						<div class="control has-icons-left">
+							<input class="input" type="password" name="user[password]" id="password">
+							<span class="icon is-small is-left">
+								<i class="fas fa-lock"></i>
+							</span>
+						</div>
+					</div>
+
+					<input class="button is-primary mt-2" type="submit" value="Login">
+
+				</form>
+
+			</div>
+		</div>
+
+	</div>

@@ -1,10 +1,62 @@
-<h1 class="is-size-1">Sign Up</h1>
+<div class="container pt-6">
+    <h2 class="title">Sign Up</h2>
 
-<form action="/signup" method="POST">
-    <label for="username">Username:</label> <input type="text" name="user[username]" id="username"></br>
-    <label for="email">Email Address:</label> <input type="email" name="user[email]" id="email"></br>
-    <label for="password">Password:</label> <input type="password" name="user[password]" id="password"></br>
-    <label for="password_confirmation">Confirm Password:</label> <input type="password" name="user[password_confirmation]" id="password_confirmation"></br></br>
+    <div class="columns pt-4">
+        <div class="column p-5 is-8-tablet is-half-desktop is-primary has-background-primary-light box">
 
-    <input type="submit" value="Sign Up">
-</form>
+            <!-- FORM -->
+            <form action="/signup" method="POST">
+
+                <!-- username -->
+                <div class="field">
+                    <label class="label" for="username">Username:</label>
+                    <div class="control has-icons-left">
+                        <input class="input" type="text" name="user[username]" id="username">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- email -->
+                <div class="field">
+                    <label class="label" for="email">Email Address:</label>
+                    <div class="control has-icons-left">
+                        <input class="input" type="email" name="user[email]" id="email">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- password -->
+
+                <div class="field">
+                    <label class="label" for="password">Password:</label>
+                    <div class="control has-icons-left">
+                        <input class="input" type="password" name="user[password]" id="password">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- confirm password -->
+                <div class="field">
+                    <label class="label" for="password_confirmation">Confirm Password:</label>
+                    <div class="control has-icons-left">
+                        <input class="input" type="password" name="user[password_confirmation]" id="password_confirmation">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <input class="button is-primary mt-2" type="submit" value="Sign Up">
+
+            </form>
+
+        </div>
+    </div>
+
+</div>

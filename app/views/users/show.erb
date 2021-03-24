@@ -1,7 +1,9 @@
-<h1>Profile</h1>
-
-<%= @user.username %>
-
-<% if @user == current_user %>
-    <a href="/logout">Log Out</a>
-<% end %>
+<div class="container pt-6">
+    <h2 class="title">
+        <% if @user == current_user %>
+        Hi there, <%= @user.username %>!
+        <% else %>
+        <%= @user.username %>'s Profile
+        <% end %>
+    </h2>
+</div>
