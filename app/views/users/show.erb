@@ -15,17 +15,57 @@
                 <section class="notification has-background-primary-light">
                     <h3 class="title">Profile</h3>
                     <div class="content">
-                        <h4 class="title is-5">Bio</h4>
-                        <p class="subtitle is-6"><%= @user.bio %> askdfhaklsjdhf</p>
+                        <h4 class="title is-5">Name</h4>
+                        <p class="subtitle is-6"><%= @user.name %></p>
                     </div>
                     <div class="content">
-                        <h4 class="title is-5">Name</h4>
-                        <p class="subtitle is-6"><%= @user.username %></p>
+                        <h4 class="title is-5">Bio</h4>
+                        <p class="subtitle is-6"><%= @user.bio %></p>
+                    </div>
+                    <div class="content">
+                        <h4 class="title is-5">Location</h4>
+                        <p class="subtitle is-6"><%= @user.location %></p>
+                    </div>
+                    <div class="content">
+                        <h4 class="title is-5">Twitter</h4>
+                        <p class="subtitle is-6">@<a href="https://www.twitter.com/<%= @user.twitter %>" target="_blank"><%= @user.twitter %></a></p>
+                    </div>
+                    <div class="content">
+                        <h4 class="title is-5">Instagram</h4>
+                        <p class="subtitle is-6">@<a href="https://www.instagram.com/<%= @user.instagram %>" target="_blank"><%= @user.instagram %></a></p>
                     </div>
                 </section>
             </div>
 
             <div class="column">
+                <h3 class="title">Recent Supplies</h3>
+                <div class="columns is-multiline">
+                    <% @user.supplies.limit(6).each do |supply| %>
+                        <div class="column is-4">
+                            <div class="card">
+                                <header class="card-header">
+                                    <p class="card-header-title"><%= supply.name %></p>
+                                </header>
+                                <div class="card-image">
+                                    <figure class="image is">
+                                        <img src="https://via.placeholder.com/150x100.png" alt="Placeholder Image">
+                                    </figure>
+                                </div>
+                                <div class="card-content">
+                                    <div class="content">
+                                        <p><%= supply.description %></p>
+                                    </div>
+                                </div>
+                                <% if supply.user == current_user %>
+                                <footer class="card-footer">
+                                    <a href="" class="card-footer-item">Edit</a>
+                                    <a href="" class="card-footer-item">Delete</a>
+                                </footer>
+                                <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
             </div>
 
         </div>
