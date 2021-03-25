@@ -2,7 +2,7 @@
     <h2 class="is-size-3 has-text-weight-semibold">Recent Users</h2>
 
     <section class="section">
-        <table class="table">
+        <table class="table is-striped is-fullwidth">
             <tbody>
             <% User.all.each do |user| %>
                 <tr>
@@ -10,33 +10,12 @@
                         <a class="has-text-grey" href="/users/<%= user.id %>"><%= user.username %></a>
                     </td>
                     <td>
-                        <p><%= user.supplies.count %></p>
+                        <p><%= user.supplies.count %> Supplies</p>
                     </td>
                 </tr>
             <% end %>
             </tbody>
         </table>
     </section>
-    
+
 </div>
-
-
-<% User.all.each do |user| %>
-<article class="media has-background-primary-light">
-    <figure class="media-left">
-        <span class="icon">
-            <i class="fas fa-home"></i>
-        </span>
-    </figure>
-    <div class="media-content">
-        <div class="content">
-            <a class="has-text-grey" href="/users/<%= user.id %>"><%= user.username %></a>
-        </div>
-    </div>
-    <div class="media-right">
-        <div class="content">
-            <p><%= user.supplies.count %></p>
-        </div>
-    </div>
-</article>
-<% end %>

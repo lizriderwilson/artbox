@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_154045) do
+ActiveRecord::Schema.define(version: 2021_03_25_143704) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 2021_03_22_154045) do
     t.string "email"
     t.datetime "created_on"
     t.text "bio"
+    t.string "name"
+    t.string "location"
+    t.string "website"
+    t.string "twitter"
+    t.string "instagram"
+    t.string "icon"
   end
 
 end
