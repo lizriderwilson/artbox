@@ -54,7 +54,7 @@ class UsersController < ApplicationController
         if params[:user][:password] == params[:user][:password_confirmation] && params[:user][:username] && params[:user][:email] && params[:user][:password]
             @user = User.find(params[:id])
             if @user && @user == current_user
-                @user.update(username: params[:user][:username], email: params[:user][:email], password: params[:user][:password])
+                @user.update(name: params[:user][:name], username: params[:user][:username], email: params[:user][:email], password: params[:user][:password], location: params[:user][:location], twitter: params[:user][:twitter], instagram: params[:user][:instagram], bio: params[:user][:bio], icon: params[:user][:icon])
                 redirect to "/users/#{params[:id]}"
             else
                 redirect to "/users/#{params[:id]}/edit"

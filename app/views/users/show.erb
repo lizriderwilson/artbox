@@ -14,6 +14,9 @@
             <div class="column">
                 <section class="notification has-background-primary-light">
                     <h3 class="title">Profile</h3>
+                    <% if @user == current_user %>
+                    <p class="subtitle is-size-6"><a href="/users/<%= @user.id %>/edit">Edit</a></p>
+                    <% end %>
                     <div class="content">
                         <h4 class="title is-5">Name</h4>
                         <p class="subtitle is-6"><%= @user.name %></p>
@@ -37,11 +40,11 @@
                 </section>
             </div>
 
-            <div class="column">
-                <h3 class="title">Recent Supplies</h3>
+            <div class="column p-5">
+                <h3 class="title mb-5">Recent Supplies</h3>
                 <div class="columns is-multiline">
                     <% @user.supplies.limit(6).each do |supply| %>
-                        <div class="column is-4">
+                        <div class="column is-4-widescreen is-6-tablet">
                             <div class="card">
                                 <header class="card-header">
                                     <p class="card-header-title"><%= supply.name %></p>
@@ -58,8 +61,8 @@
                                 </div>
                                 <% if supply.user == current_user %>
                                 <footer class="card-footer">
-                                    <a href="" class="card-footer-item">Edit</a>
-                                    <a href="" class="card-footer-item">Delete</a>
+                                    <a href="/supplies/<%= supply.id %>/edit" class="card-footer-item">Edit</a>
+                                    <a href="/supplies/<%= supply.id %>/delete" class="card-footer-item">Delete</a>
                                 </footer>
                                 <% end %>
                             </div>
