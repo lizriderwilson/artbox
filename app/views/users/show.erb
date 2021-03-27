@@ -41,8 +41,11 @@
             </div>
 
             <div class="column p-5">
-                <h3 class="title mb-5">Recent Supplies</h3>
-                <p class="subtitle is-size-6"><a href="/supplies">View All</a></p>
+                <div class="level">
+                    <h3 class="is-size-3 has-text-weight-semibold">Recent Supplies</h3>
+                    <div class="level-item hast-text centered"><p class="is-size-6"><a href="/supplies">View All</a></p></div>
+                    <div class="level-item hast-text centered"><p class="is-size-6"><a href="/supplies/new">Create New</a></p></div>
+                </div>
                 <div class="columns is-multiline">
                     <% @user.supplies.limit(6).each do |supply| %>
                         <div class="column is-4-widescreen is-6-tablet">

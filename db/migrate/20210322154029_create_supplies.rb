@@ -5,6 +5,7 @@ class CreateSupplies < ActiveRecord::Migration[6.1]
       t.text :description
       t.timestamp :created_on
       t.integer :user_id
+      t.integer :category_id
     end
   end
 end

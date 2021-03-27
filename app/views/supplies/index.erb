@@ -4,7 +4,7 @@
     <section class="section">
         <div class="columns is-multiline">
 
-            <div class="column">
+            <div class="column is-3">
                 <aside class="menu">
                     <p class="menu-label">
                         Categories
@@ -17,7 +17,7 @@
                 </aside>
             </div>
 
-            <% Supply.all.limit(15).each do |supply| %>
+            <% Supply.all.limit(2).each do |supply| %>
             <div class="column is-one-fifth-widescreen is-one-third-tablet">
                 <div class="card">
                     <header class="card-header">

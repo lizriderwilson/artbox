@@ -21,10 +21,6 @@ ActiveRecord::Schema.define(version: 2021_03_25_143704) do
     t.text "description"
     t.datetime "created_on"
     t.integer "user_id"
-  end
-
-  create_table "supply_categories", force: :cascade do |t|
-    t.integer "supply_id"
     t.integer "category_id"
   end
 
@@ -36,7 +32,6 @@ ActiveRecord::Schema.define(version: 2021_03_25_143704) do
     t.text "bio"
     t.string "name"
     t.string "location"
-    t.string "website"
     t.string "twitter"
     t.string "instagram"
     t.string "icon"

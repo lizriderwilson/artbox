@@ -1,1 +1,216 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<div class="container pt-6">
+    <h2 class="is-size-3 has-text-weight-semibold has-text-centered">Sign Up</h2>
+
+            <!-- FORM -->
+    <section class="section">
+        <form action="/signup" method="POST">
+            <div class="columns is-centered has-background-primary-light box">
+                <div class="column m-4">
+                    <!-- name -->
+                    <div class="field">
+                        <label class="label" for="name">Name:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" name="user[name]" id="name">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-signature"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- username -->
+                    <div class="field">
+                        <label class="label" for="username">Username:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" name="user[username]" id="username">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- email -->
+                    <div class="field">
+                        <label class="label" for="email">Email Address:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="email" name="user[email]" id="email">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- password -->
+                    <div class="field">
+                        <label class="label" for="password">Password:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="password" name="user[password]" id="password">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- confirm password -->
+                    <div class="field">
+                        <label class="label" for="password_confirmation">Confirm Password:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="password" name="user[password_confirmation]" id="password_confirmation">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="column m-4">
+                    <!-- location -->
+                    <div class="field">
+                        <label class="label" for="location">Location:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" name="user[location]" id="location">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-globe-americas"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- twitter -->
+                    <div class="field">
+                        <label class="label" for="twitter">Twitter:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" name="user[twitter]" id="twitter" placeholder="@">
+                            <span class="icon is-small is-left">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- instagram -->
+                    <div class="field">
+                        <label class="label" for="instagram">Instagram:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" name="user[instagram]" id="instagram" placeholder="@">
+                            <span class="icon is-small is-left">
+                                <i class="fab fa-instagram"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Bio -->
+                    <div class="field">
+                        <label class="label" for="bio">Bio:</label>
+                        <div class="control">
+                            <textarea class="textarea" type="textarea" name="user[bio]" id="bio"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="column m-4 is-flex is-flex-direction-column is-justify-content-space-evenly has-text-centered">
+                    <p class="title is-5">
+                        Choose an icon to represent you!
+                    </p>
+        
+                    <div class="control">
+                            <div class="columns is-centered">
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-paint-brush">
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-paint-brush"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-pencil-alt">
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-pencil-alt"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-pen-fancy">
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-pen-fancy"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="columns is-centered">
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-highlighter">
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-highlighter"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-palette">
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-palette"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-spray-can">
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-spray-can"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="columns is-centered">
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-cut">
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-cut"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-tape">
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-tape"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                    <input type="radio" name="user[icon]" value="fas fa-book">
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-book"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="columns is-centered">
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-laptop">
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-laptop"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-tablet-alt">
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-tablet-alt"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-bezier-curve">
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-bezier-curve"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <input class="button is-primary mt-2 has-text-centered" type="submit" value="Sign Up">
+        </form>
+    </section>
+
+</div>
