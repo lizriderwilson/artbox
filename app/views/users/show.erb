@@ -60,12 +60,13 @@
                                         <p><%= supply.description %></p>
                                     </div>
                                 </div>
-                                <% if supply.user == current_user %>
                                 <footer class="card-footer">
+                                    <a href="/supplies/<%= supply.id %>" class="card-footer-item">View</a>
+                                <% if supply.user == current_user %>
                                     <a href="/supplies/<%= supply.id %>/edit" class="card-footer-item">Edit</a>
                                     <a href="/supplies/<%= supply.id %>/delete" class="card-footer-item">Delete</a>
-                                </footer>
                                 <% end %>
+                                </footer>
                             </div>
                         </div>
                     <% end %>

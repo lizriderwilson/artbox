@@ -1,2 +1,33 @@
-<h1><%= current_user.id %> Supplies</h1>
+<div class="container pt-6">
+    <h2 class="title has-text-centered">Recent Supplies</h2>
+
+    <section class="section">
+        <div class="columns is-multiline">
+
+            <% Supply.all.limit(15).each do |supply| %>
+            <div class="column is-one-fifth-widescreen is-one-third-tablet">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title"><%= supply.name %></p>
+                    </header>
+                    <div class="card-image">
+                        <figure class="image is">
+                            <img src="https://via.placeholder.com/150x100.png" alt="Placeholder Image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p><%= supply.description %></p>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="/supplies/<%= supply.id %>" class="card-footer-item">View</a>
+                    </footer>
+                </div>
+            </div>
+            <% end %>
+
+        </div>
+    </section>
+</div>
 
