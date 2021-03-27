@@ -1,6 +1,28 @@
 <div class="container pt-6">
     <h2 class="title has-text-centered"><%= @supply.name %></h2>
 
-    <section class="section">
+    <section class="section has-background-primary-light box has-text-centered">
+        <section class="block">
+            <h3 class="title">Categories</h3>
+                <% @supply.categories.all.each do |category| %>
+                <a href="/category/<%= category.id %>"><span class="tag is-primary"><%= category.name %></span></a>
+                <% end %>
+        </section>
+
+        <section class="block">
+            <h3 class="title">Owner</h3>
+            <p class="subtitle"><%= @supply.user.username %></p>
+        </section>
+
+        <section class="block">
+            <h3 class="title">Description</h3>
+            <p class="subtitle"><%= @supply.description %></p>
+        </section>
+
+        <section class="block">
+            <h3 class="title">Date Added</h3>
+            <p class="subtitle"><%= @supply.created_on %></p>
+        </section>
+
     </section>
 </div>
