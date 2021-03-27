@@ -3,10 +3,8 @@
 
     <section class="section has-background-primary-light box has-text-centered">
         <section class="block">
-            <h3 class="title">Categories</h3>
-                <% @supply.categories.all.each do |category| %>
-                <a href="/category/<%= category.id %>"><span class="tag is-primary"><%= category.name %></span></a>
-                <% end %>
+            <h3 class="title">Category</h3>
+                <a href="/category/<%= @supply.category.id %>"><span class="tag is-primary"><%= @supply.category.name %></span></a>
         </section>
 
         <section class="block">

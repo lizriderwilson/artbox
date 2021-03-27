@@ -6,5 +6,6 @@ end
 
 use UsersController
 use SuppliesController
+use CategoriesController
 use SessionsController
 run ApplicationController
