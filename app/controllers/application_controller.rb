@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
     set :method_override, true
     enable :sessions
     set :session_secret, "hello" #ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
+    set :strict_paths, false
   end
 
   get "/" do
