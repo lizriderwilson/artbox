@@ -4,6 +4,19 @@
     <section class="section">
         <div class="columns is-multiline">
 
+            <div class="column">
+                <aside class="menu">
+                    <p class="menu-label">
+                        Categories
+                    </p>
+                    <ul class="menu-list">
+                    <% Category.all.each do |category| %>
+                        <li><a href="/category/<%= category.id %>"><%= category.name %></a></li>
+                    <% end %>
+                    </ul>
+                </aside>
+            </div>
+
             <% Supply.all.limit(15).each do |supply| %>
             <div class="column is-one-fifth-widescreen is-one-third-tablet">
                 <div class="card">

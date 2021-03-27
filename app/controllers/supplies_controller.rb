@@ -17,12 +17,13 @@ class SuppliesController < ApplicationController
 
   # show
   get "/supplies/:id" do
-    erb :"/supplies/show.html"
+    @supply = Supply.find(params[:id])
+    erb :"/supplies/show"
   end
 
   # edit
   get "/supplies/:id/edit" do
-    erb :"/supplies/edit.html"
+    erb :"/supplies/edit"
   end
 
   # update
