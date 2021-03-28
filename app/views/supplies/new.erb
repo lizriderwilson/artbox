@@ -20,7 +20,7 @@
                         <label class="label" for="category">Category:</label>
                         <div class="control">
                             <div class="select">
-                                <select name="supply[category]" id="category">
+                                <select name="supply[category_id]" id="category_id">
                                     <option></option>
                                     <% Category.all.each do |category| %>
                                     <option value="<%= category.id %>"><%= category.name %></option>

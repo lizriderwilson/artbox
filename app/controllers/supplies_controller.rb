@@ -12,7 +12,18 @@ class SuppliesController < ApplicationController
 
   # create
   post "/supplies" do
-    redirect "/supplies"
+    binding.pry
+    if params[:supply][:name] && params[:supply][:category_id]
+      @supply = current_user.supplies.build(params[:supply])
+      # @supply.user = current_user
+      if @supply.save
+          redirect to "/supplies/#{@supply.id}"
+      else
+          redirect to "/supplies/"
+      end
+    else
+      redirect to "/supplies/new"
+    end
   end
 
   # show
