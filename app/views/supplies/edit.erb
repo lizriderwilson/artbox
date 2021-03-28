@@ -1,1 +1,57 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+
+<div class="container pt-6">
+
+    <h2 class="is-size-3 has-text-weight-semibold has-text-centered">Edit Supply</h2>
+
+            <!-- FORM -->
+    <section class="section">
+        <form action="/supplies" method="POST">
+            <div class="columns is-centered">
+                <div class="column m-4 p-5 is-half has-background-primary-light box">
+
+                    <!-- name -->
+                    <div class="field">
+                        <label class="label" for="name">Name:</label>
+                        <div class="control">
+                            <input class="input" type="text" name="supply[name]" id="name" value="<%= @supply.name %>">
+                        </div>
+                    </div>
+
+                    <!-- category -->
+                    <div class="field">
+                        <label class="label" for="category">Category:</label>
+                        <div class="control level">
+                            <div class="select level-left" id="category_select">
+                                <select name="category[name]" id="category_name">
+                                    <% Category.all.each do |category| %>
+                                    <option value="<%= category.name %>"
+                                    <% if category.name == @supply.category.name %>
+                                    selected="selected"
+                                    <% end %>
+                                    ><%= category.name %></option>
+                                    <% end %>
+                                    <option value="" id="new_category">--New Category--</option>
+                                </select>
+                            </div>
+                            <div class="level-right" id="new_category_name">
+                                <input type="text" class="input level-item" name="category[name]">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- description -->
+                    <div class="field">
+                        <label class="label" for="description">Description:</label>
+                        <div class="control">
+                            <textarea class="textarea" type="textarea" name="supply[description]" id="description"><% if @supply.description %><%= @supply.description %><% end %>
+                            </textarea>
+                        </div>
+                    </div>
+                <input class="button is-primary mt-2 has-text-centered" type="submit" value="Edit Supply">
+                </div>
+                
+            </div>
+        </form>
+    </section>
+
+</div>

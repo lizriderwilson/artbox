@@ -42,6 +42,7 @@ class SuppliesController < ApplicationController
 
   # edit
   get "/supplies/:id/edit" do
+    @supply = Supply.find(params[:id])
     erb :"/supplies/edit"
   end
 
