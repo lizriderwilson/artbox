@@ -50,7 +50,7 @@
                     <div class="level-item hast-text centered"><p class="is-size-6"><a href="/supplies/new">Create New</a></p></div>
                 </div>
                 <div class="columns is-multiline">
-                    <% @user.supplies.reverse.cycle(6) do |supply| %>
+                    <% @user.supplies.reverse.first(6).each do |supply| %>
                         <div class="column is-4-widescreen is-6-tablet">
                             <div class="card">
                                 <header class="card-header">
