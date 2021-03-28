@@ -18,7 +18,7 @@
                 </section>
                 <section class="block">
                     <h3 class="title">Date Added</h3>
-                    <p class="subtitle"><%= @supply.created_on %></p>
+                    <p class="subtitle"><%= @supply.created_on.strftime("%B %-d, %Y") %></p>
                 </section>
                 <section class="block">
                     <% if @supply.user == current_user %>
