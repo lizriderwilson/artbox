@@ -42,7 +42,16 @@ class SuppliesController < ApplicationController
 
   # edit
   get "/supplies/:id/edit" do
-    @supply = Supply.find(params[:id])
+    if logged_in?
+      @supply = Supply.find(params[:id])
+        if @supply.user == current_user
+            erb :"supplies/edit"
+        else
+            redirect to "/supplies/#{params[:id]}"
+        end
+    else
+        redirect to "/supplies/#{params[:id]}"
+    end
     erb :"/supplies/edit"
   end
 
