@@ -58,5 +58,21 @@
 
         <div class="container py-4"><%= yield %></div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    
+    $(document).ready(function() {
+        $("#new_category_name").hide();
+        $("#category_select").change(function() {
+            console.log($("option:checked").text());
+            if ($("option:checked").text() == "--New Category--") {
+                $("#new_category_name").show();
+            } else {
+                $("#new_category_name").hide();
+            }
+        });
+    });
+
+    </script>
 	</body>
 </html>

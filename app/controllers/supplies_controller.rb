@@ -13,7 +13,7 @@ class SuppliesController < ApplicationController
   # create
   post "/supplies" do
     binding.pry
-    if params[:supply][:name] && params[:supply][:category_id]
+    if params[:supply][:name] && params[:supply][:category_name]
       @supply = current_user.supplies.build(params[:supply])
       # @supply.user = current_user
       if @supply.save
