@@ -5,7 +5,8 @@
 
             <!-- FORM -->
     <section class="section">
-        <form action="/supplies" method="POST">
+        <form action="/supplies/<%= @supply.id %>" method="POST">
+        <input type="hidden" id="hidden" name="_method" value="patch">
             <div class="columns is-centered">
                 <div class="column m-4 p-5 is-half has-background-primary-light box">
 
@@ -43,8 +44,7 @@
                     <div class="field">
                         <label class="label" for="description">Description:</label>
                         <div class="control">
-                            <textarea class="textarea" type="textarea" name="supply[description]" id="description"><% if @supply.description %><%= @supply.description %><% end %>
-                            </textarea>
+                            <textarea class="textarea" type="textarea" name="supply[description]" id="description"><% if @supply.description %><%= @supply.description %><% end %></textarea>
                         </div>
                     </div>
                 <input class="button is-primary mt-2 has-text-centered" type="submit" value="Edit Supply">

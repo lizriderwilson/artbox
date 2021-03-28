@@ -18,7 +18,7 @@ class SuppliesController < ApplicationController
   post "/supplies" do
     if logged_in?
       if params[:supply][:name] && params[:category][:name]
-        @supply = Supply.new(name: params[:supply][:name], description: params[:supply][:name])
+        @supply = Supply.new(name: params[:supply][:name], description: params[:supply][:description])
         @supply.category = Category.find_or_create_by(name: params[:category][:name])
         @supply.user = current_user
         if @supply.save
@@ -57,6 +57,18 @@ class SuppliesController < ApplicationController
 
   # update
   patch "/supplies/:id" do
+    if params[:supply][:name] && params[:category][:name]
+      @supply = Supply.find_by(name: params[:supply][:name])
+      if @supply.user == current_user
+          @category = Category.find_or_create_by(name: params[:category][:name])
+          @supply.update(name: params[:supply][:name], description: params[:supply][:description], category_id: @category.id)
+          redirect to "/supplies/#{params[:id]}"
+      else
+          redirect to "/supplies/#{params[:id]}/edit"
+      end
+    else
+        redirect to "/supplies/#{params[:id]}/edit"
+    end
     redirect "/supplies/:id"
   end
 
