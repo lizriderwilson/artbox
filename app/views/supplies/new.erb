@@ -22,8 +22,8 @@
                         <label class="label" for="category">Category:</label>
                         <div class="control level">
                             <div class="select level-left" id="category_select">
-                                <select name="supply[category_name]" id="category_name">
-                                    <option value="asdfasdf" disabled selected>Select</option>
+                                <select name="category[name]" id="category_name">
+                                    <option value="" disabled selected>Select</option>
                                     <% Category.all.each do |category| %>
                                     <option value="<%= category.name %>"><%= category.name %></option>
                                     <% end %>
@@ -31,7 +31,7 @@
                                 </select>
                             </div>
                             <div class="level-right" id="new_category_name">
-                                <input type="text" class="input level-item" name="supply[category_name]">
+                                <input type="text" class="input level-item" name="category[name]">
                             </div>
                         </div>
                     </div>
