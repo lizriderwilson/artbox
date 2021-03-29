@@ -17,28 +17,34 @@
                 </aside>
             </div>
 
-            <% Supply.all.limit(2).each do |supply| %>
-            <div class="column is-one-fifth-widescreen is-one-third-tablet">
-                <div class="card">
-                    <header class="card-header">
-                        <p class="card-header-title"><%= supply.name %></p>
-                    </header>
-                    <div class="card-image">
-                        <figure class="image is">
-                            <img src="https://via.placeholder.com/150x100.png" alt="Placeholder Image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="content">
-                            <p><%= supply.description %></p>
+            <div class="column">
+
+            <div class="columns is-multiline">
+                <% Supply.all.limit(16).each do |supply| %>
+                    <div class="column is-one-fifth-widescreen is-one-third-tablet">
+                        <div class="card">
+                            <header class="card-header">
+                                <p class="card-header-title"><%= supply.name %></p>
+                            </header>
+                            <div class="card-image">
+                                <figure class="image is">
+                                    <img src="https://via.placeholder.com/150x100.png" alt="Placeholder Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <p><%= supply.description %></p>
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a href="/supplies/<%= supply.id %>" class="card-footer-item">View</a>
+                            </footer>
                         </div>
                     </div>
-                    <footer class="card-footer">
-                        <a href="/supplies/<%= supply.id %>" class="card-footer-item">View</a>
-                    </footer>
-                </div>
+                <% end %>
             </div>
-            <% end %>
+
+            </div>
 
         </div>
     </section>
