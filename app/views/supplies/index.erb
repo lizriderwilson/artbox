@@ -11,7 +11,7 @@
                     </p>
                     <ul class="menu-list">
                     <% Category.all.each do |category| %>
-                        <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
+                        <li><a href="/categories/<%= category.slug %>"><%= category.name %></a></li>
                     <% end %>
                     </ul>
                 </aside>
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <footer class="card-footer">
-                                <a href="/supplies/<%= supply.slug %>" class="card-footer-item">View</a>
+                                <a href="/supplies/<%= supply.id %>" class="card-footer-item">View</a>
                             </footer>
                         </div>
                     </div>

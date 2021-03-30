@@ -6,7 +6,7 @@
             <section class="section has-background-primary-light box has-text-centered">
                 <section class="block">
                     <h3 class="title">Category</h3>
-                        <a href="/categories/<%= @supply.category.id %>"><span class="tag is-primary"><%= @supply.category.name %></span></a>
+                        <a href="/categories/<%= @supply.category.slug %>"><span class="tag is-primary"><%= @supply.category.name %></span></a>
                 </section>
                 <section class="block">
                     <h3 class="title">Owner</h3>
@@ -22,8 +22,8 @@
                 </section>
                 <section class="block">
                     <% if @supply.user == current_user %>
-                    <a href="<%= @supply.slug %>/edit" class="button is-primary">Edit</a>
-                    <a href="<%= @supply.slug %>/delete" class="button is-primary">Delete</a>
+                    <a href="<%= @supply.id %>/edit" class="button is-primary">Edit</a>
+                    <a href="<%= @supply.id %>/delete" class="button is-primary">Delete</a>
                     <% end %>
                 </section>
             </section>
