@@ -1,8 +1,13 @@
 class User < ActiveRecord::Base
-    extend Slugifiable::ClassMethods
     
     def slug
         username.downcase.gsub(" ", "-")
+    end
+
+    def find_by_slug(slug)
+        self.all.find do |instance|
+            instance.slug == slug
+        end
     end
 
     has_many :supplies

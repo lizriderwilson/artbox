@@ -67,10 +67,10 @@
                                     </div>
                                 </div>
                                 <footer class="card-footer">
-                                    <a href="/supplies/<%= supply.slug %>" class="card-footer-item">View</a>
+                                    <a href="/supplies/<%= supply.id %>" class="card-footer-item">View</a>
                                 <% if supply.user == current_user %>
-                                    <a href="/supplies/<%= supply.slug %>/edit" class="card-footer-item">Edit</a>
-                                    <a href="/supplies/<%= supply.slug %>/delete" class="card-footer-item">Delete</a>
+                                    <a href="/supplies/<%= supply.id %>/edit" class="card-footer-item">Edit</a>
+                                    <a href="/supplies/<%= supply.id %>/delete" class="card-footer-item">Delete</a>
                                 <% end %>
                                 </footer>
                             </div>
