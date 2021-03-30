@@ -22,7 +22,7 @@ class SuppliesController < ApplicationController
         @supply.category = Category.find_or_create_by(name: params[:category][:name])
         @supply.user = current_user
         if @supply.save
-            redirect to "/supplies/#{@supply.id}"
+            redirect to "/supplies/#{@supply.slug}"
         else
             redirect to "/supplies/"
         end
@@ -35,45 +35,45 @@ class SuppliesController < ApplicationController
   end
 
   # show
-  get "/supplies/:id" do
-    @supply = Supply.find(params[:id])
+  get "/supplies/:slug" do
+    @supply = Supply.find_by_slug(params[:slug])
     erb :"/supplies/show"
   end
 
   # edit
-  get "/supplies/:id/edit" do
+  get "/supplies/:slug/edit" do
     if logged_in?
-      @supply = Supply.find(params[:id])
+      @supply = Supply.find(params[:slug])
         if @supply.user == current_user
             erb :"supplies/edit"
         else
-            redirect to "/supplies/#{params[:id]}"
+            redirect to "/supplies/#{params[:slug]}"
         end
     else
-        redirect to "/supplies/#{params[:id]}"
+        redirect to "/supplies/#{params[:slug]}"
     end
     erb :"/supplies/edit"
   end
 
   # update
-  patch "/supplies/:id" do
+  patch "/supplies/:slug" do
     if params[:supply][:name] && params[:category][:name]
       @supply = Supply.find_by(name: params[:supply][:name])
       if @supply.user == current_user
           @category = Category.find_or_create_by(name: params[:category][:name])
           @supply.update(name: params[:supply][:name], description: params[:supply][:description], category_id: @category.id)
-          redirect to "/supplies/#{params[:id]}"
+          redirect to "/supplies/#{params[:slug]}"
       else
-          redirect to "/supplies/#{params[:id]}/edit"
+          redirect to "/supplies/#{params[:slug]}/edit"
       end
     else
-        redirect to "/supplies/#{params[:id]}/edit"
+        redirect to "/supplies/#{params[:slug]}/edit"
     end
-    redirect "/supplies/:id"
+    redirect "/supplies/:slug"
   end
 
   # destroy
-  delete "/supplies/:id/delete" do
+  delete "/supplies/:slug/delete" do
     redirect "/supplies"
   end
 end
