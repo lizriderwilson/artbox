@@ -22,8 +22,8 @@
                 </section>
                 <section class="block">
                     <% if @supply.user == current_user %>
-                    <a href="<%= @supply.id %>/edit" class="button is-primary">Edit</a>
-                    <a href="<%= @supply.id %>/delete" class="button is-primary">Delete</a>
+                    <a href="<%= @supply.slug %>/edit" class="button is-primary">Edit</a>
+                    <a href="<%= @supply.slug %>/delete" class="button is-primary">Delete</a>
                     <% end %>
                 </section>
             </section>
