@@ -17,9 +17,6 @@
             <div class="column">
                 <section class="notification has-background-primary-light">
                     <h3 class="title">Profile</h3>
-                    <% if @user == current_user %>
-                    <p class="subtitle is-size-6"><a href="/users/<%= @user.slug %>/edit">Edit</a></p>
-                    <% end %>
                     <div class="content">
                         <h4 class="title is-5">Name</h4>
                         <p class="subtitle is-6"><%= @user.name %></p>
@@ -41,6 +38,12 @@
                         <p class="subtitle is-6">@<a href="https://www.instagram.com/<%= @user.instagram %>" target="_blank"><%= @user.instagram %></a></p>
                     </div>
                 </section>
+                <% if @user == current_user %>
+                <div class="level">
+                    <a href="/users/<%= current_user.slug %>/edit" class="level-item button is-primary mx-2">Edit Profile</a>
+                    <a href="/users/<%= current_user.slug %>/confirm_delete" class="level-item button is-warning mx-2">Delete Account</a>
+                </div>
+                <% end %>
             </div>
 
             <div class="column p-5">

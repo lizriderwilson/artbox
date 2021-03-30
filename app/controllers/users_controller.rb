@@ -64,4 +64,17 @@ class UsersController < ApplicationController
         end
     end
 
+    get "/users/:slug/confirm_delete" do
+        if logged_in? && current_user == User.find_by_slug(params[:slug])
+            erb :"/users/confirm"
+        else
+            redirect to "/users/#{params[:slug]}"
+        end
+    end
+
+    # destroy
+    delete "/users/:slug/delete" do
+        redirect "/supplies"
+    end
+
 end

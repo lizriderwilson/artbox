@@ -1,0 +1,11 @@
+<div class="container pt-6">
+    <h2 class="title has-text-centered">Are you sure you want to delete your account?</h2>
+    <div class="columns is-centered pt-4">
+        <div class="column is-one-third">
+            <div class="level">
+                <a href="/users/<%= current_user.slug %>/delete" class="level-item button is-primary mx-2">Yes, goodbye!</a>
+                <a href="/users/<%= current_user.slug %>" class="level-item button is-primary mx-2">No, take me back!</a>
+            </div>
+        </div>
+    </div>
+</div>
