@@ -74,6 +74,17 @@ class SuppliesController < ApplicationController
 
   # destroy
   delete "/supplies/:id/delete" do
-    redirect "/supplies"
+    @supply = Supply.find(params[:id])
+    if @supply
+      if logged_in? && @supply.user == current_user
+        @supply.delete
+        redirect to "/users/#{current_user.slug}"
+      else
+          redirect to "/supplies/#{params[:id]}"
+      end
+    else
+      redirect to "/supplies"
+    end
   end
+  
 end

@@ -20,12 +20,19 @@
                     <h3 class="title">Date Added</h3>
                     <p class="subtitle"><%= @supply.created_on.strftime("%B %-d, %Y") %></p>
                 </section>
-                <section class="block">
+                    <div class="columns is-centered pt-4">
+        <div class="column is-one-third">
+                <section class="level">
                     <% if @supply.user == current_user %>
-                    <a href="<%= @supply.id %>/edit" class="button is-primary">Edit</a>
-                    <a href="<%= @supply.id %>/delete" class="button is-primary">Delete</a>
+                    <a href="<%= @supply.id %>/edit" class="level-item button is-primary mx-2">Edit</a>
+                    <form action="/supplies/<%= @supply.id %>/delete" method="post">
+                        <input type="hidden" id="hidden" name="_method" value="delete">
+                        <input type="submit" class="level-item button is-warning mx-2" name="delete" id="delete" value="Delete">
+                    </form>
                     <% end %>
                 </section>
+                </div>
+                </div>
             </section>
         </div>
     </div>
