@@ -74,7 +74,16 @@ class UsersController < ApplicationController
 
     # destroy
     delete "/users/:slug/delete" do
-        redirect "/supplies"
+        if logged_in? && current_user == User.find_by_slug(params[:slug])
+            @user = User.find_by_slug(params[:slug])
+            if @user
+                @user.delete
+                session.destroy
+                redirect to "/"
+            end
+        else
+            redirect to "/users/#{params[:slug]}"
+        end
     end
 
 end

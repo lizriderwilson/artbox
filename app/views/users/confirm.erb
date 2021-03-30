@@ -3,7 +3,10 @@
     <div class="columns is-centered pt-4">
         <div class="column is-one-third">
             <div class="level">
-                <a href="/users/<%= current_user.slug %>/delete" class="level-item button is-primary mx-2">Yes, goodbye!</a>
+                <form action="/users/<%= current_user.slug %>/delete" method="post">
+                    <input type="hidden" id="hidden" name="_method" value="delete">
+                    <input type="submit" class="level-item button is-primary px-6 mx-2" name="delete" id="delete" value="Yes, goodbye!">
+                </form>
                 <a href="/users/<%= current_user.slug %>" class="level-item button is-primary mx-2">No, take me back!</a>
             </div>
         </div>
