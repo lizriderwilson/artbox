@@ -6,23 +6,23 @@ class CategoriesController < ApplicationController
   end
 
   # GET: /categories/5
-  get "/categories/:id" do
-    @category = Category.find(params[:id])
+  get "/categories/:slug" do
+    @category = Category.find_by_slug(params[:slug])
     erb :"/categories/show"
   end
 
   # GET: /categories/5/edit
-  get "/categories/:id/edit" do
+  get "/categories/:slug/edit" do
     erb :"/categories/edit"
   end
 
   # PATCH: /categories/5
-  patch "/categories/:id" do
-    redirect "/categories/:id"
+  patch "/categories/:slug" do
+    redirect "/categories/:slug"
   end
 
   # DELETE: /categories/5/delete
-  delete "/categories/:id/delete" do
+  delete "/categories/:slug/delete" do
     redirect "/categories"
   end
 end
