@@ -7,7 +7,7 @@
             <% User.all.each do |user| %>
                 <tr>
                     <td>
-                        <a class="has-text-grey" href="/users/<%= user.id %>">
+                        <a class="has-text-grey" href="/users/<%= user.slug %>">
                             <span class="icon">
                                 <i class="<%= user.icon %>"></i>
                             </span>

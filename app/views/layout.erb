@@ -49,14 +49,14 @@
                     <div class="navbar-end">
                         <% if current_user %>
                             <div class="navbar-item has-dropdown is-hoverable">
-                                <a href="/users/<%= current_user.id %>" class="navbar-link is-arrowless">
+                                <a href="/users/<%= current_user.slug %>" class="navbar-link is-arrowless">
                                     <span class="icon">
                                         <i class="<%= current_user.icon %>"></i>
                                     </span>
                                     <span><%= current_user.username %></span>
                                 </a>
                                 <div class="navbar-dropdown">
-                                    <a href="/users/<%= current_user.id %>" class="navbar-item">Profile</a>
+                                    <a href="/users/<%= current_user.slug %>" class="navbar-item">Profile</a>
                                     <a href="/supplies/new" class="navbar-item">New Supply</a>
                                     <hr class="navbar-divider">
                             <a class="navbar-item" href="/logout">Log Out</a>

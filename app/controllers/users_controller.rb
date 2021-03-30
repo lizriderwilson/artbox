@@ -30,37 +30,37 @@ class UsersController < ApplicationController
     end
 
     #show
-    get "/users/:id" do
-        @user = User.find(params[:id])
+    get "/users/:slug" do
+        @user = User.find_by_slug(params[:slug])
         erb :"users/show"
     end
 
     #edit
-    get "/users/:id/edit" do
+    get "/users/:slug/edit" do
         if logged_in?
-            @user = User.find(params[:id])
+            @user = User.find_by_slug(params[:slug])
             if @user == current_user
                 erb :"users/edit"
             else
-                redirect to "/users/#{params[:id]}"
+                redirect to "/users/#{params[:slug]}"
             end
         else
-            redirect to "/users/#{params[:id]}"
+            redirect to "/users/#{params[:slug]}"
         end
     end
 
     #update
-    patch "/users/:id" do
+    patch "/users/:slug" do
         if params[:user][:password] == params[:user][:password_confirmation] && params[:user][:username] && params[:user][:email] && params[:user][:password]
-            @user = User.find(params[:id])
+            @user = User.find_by_slug(params[:slug])
             if @user && @user == current_user
                 @user.update(name: params[:user][:name], username: params[:user][:username], email: params[:user][:email], password: params[:user][:password], location: params[:user][:location], twitter: params[:user][:twitter], instagram: params[:user][:instagram], bio: params[:user][:bio], icon: params[:user][:icon])
-                redirect to "/users/#{params[:id]}"
+                redirect to "/users/#{params[:slug]}"
             else
-                redirect to "/users/#{params[:id]}/edit"
+                redirect to "/users/#{params[:slug]}/edit"
             end
         else
-            redirect to "/users/#{params[:id]}/edit"
+            redirect to "/users/#{params[:slug]}/edit"
         end
     end
 
