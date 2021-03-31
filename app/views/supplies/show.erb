@@ -1,4 +1,16 @@
-<div class="container pt-6">
+<div class="container">
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb mt-2 mb-5" aria-label="breadcrumbs">
+    <ul>
+        <li><a class="has-text-primary" href="/">Home</a></li>
+        <li><a class="has-text-primary" href="/users">Users</a></li>
+        <li><a class="has-text-primary" href="/users/<%= current_user.slug %>"><%= current_user.username %>'s Profile</a></li>
+        <li><a class="has-text-primary" href="/users/<%= current_user.slug %>/supplies"><%= current_user.username %>'s Supplies</a></li>
+        <li class="is-active"><a aria-current="page" href="#">Edit <%= @supply.name %></a></li>
+    </ul>
+    </nav>
+    
     <h2 class="title has-text-centered"><%= @supply.name %></h2>
 
     <div class="columns is-centered">

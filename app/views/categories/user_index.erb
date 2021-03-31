@@ -26,7 +26,7 @@
                         <li><a 
                         <% if category.name == @category.name %>
                         class="is-active has-background-primary" 
-                        <% end %> href="/categories/<%= category.slug %>"><%= category.name %></a></li>
+                        <% end %> href="/users/<%= @user.slug %>/<%= category.slug %>"><%= category.name %></a></li>
                     <% end %>
                     </ul>
                 </aside>
