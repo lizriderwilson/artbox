@@ -63,18 +63,18 @@ class SuppliesController < ApplicationController
   # update
   patch "/supplies/:id" do
     if params[:supply][:name] && params[:category][:name]
-      @supply = Supply.find_by(name: params[:supply][:name])
+      binding.pry
+      @supply = Supply.find_by(id: params[:id])
       if @supply.user == current_user
           @category = Category.find_or_create_by(name: params[:category][:name])
           @supply.update(name: params[:supply][:name], description: params[:supply][:description], category_id: @category.id)
           redirect to "/supplies/#{params[:id]}"
       else
-          redirect to "/supplies/#{params[:id]}/edit"
+          redirect to "/supplies/#{params[:id]}"
       end
     else
         redirect to "/supplies/#{params[:id]}/edit"
     end
-    redirect "/supplies/:id"
   end
 
   # destroy
