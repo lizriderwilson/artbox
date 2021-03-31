@@ -1,5 +1,15 @@
 <div class="container">
-    <section class="section has-text-centered">
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb mt-2 mb-4" aria-label="breadcrumbs">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/users">Users</a></li>
+        <li class="is-active"><a aria-current="page" href="#"><%= @user.username %>'s Profile</a></li>
+    </ul>
+    </nav>
+
+    <div class="has-text-centered my-2">
         <h2 class="title">
             <% if @user == current_user %>
             Hi there, <%= @user.username %>!
@@ -8,7 +18,7 @@
             <% end %>
         </h2>
         <p class="subtitle">Member since <%= @user.created_on.strftime("%B %Y") %></p>
-    </section>
+    </div>
 
     <section class="section">
 
