@@ -1,4 +1,14 @@
-<div class="container pt-6">
+<div class="container">
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb mt-2 mb-5" aria-label="breadcrumbs">
+    <ul>
+        <li><a class="has-text-primary" href="/">Home</a></li>
+        <li><a class="has-text-primary" href="/supplies">Supplies</a></li>
+        <li class="is-active"><a aria-current="page" href="#"><%= @category.name %></a></li>
+    </ul>
+    </nav>
+
     <h2 class="title has-text-centered"><%= @category.name.split(" ").map(&:capitalize).join(" ") %></h2>
 
     <section class="section">
@@ -13,14 +23,17 @@
                     <% Category.all.each do |category| %>
                         <li><a 
                         <% if category.name == @category.name %>
-                        class="is-active" 
+                        class="is-active has-background-primary" 
                         <% end %> href="/categories/<%= category.slug %>"><%= category.name %></a></li>
                     <% end %>
                     </ul>
                 </aside>
             </div>
 
-            <% @category.supplies.all.limit(2).each do |supply| %>
+            <div class="column">
+
+            <div class="columns is-multiline">
+            <% @category.supplies.all.each do |supply| %>
             <div class="column is-one-fifth-widescreen is-one-third-tablet">
                 <div class="card">
                     <header class="card-header">
@@ -37,11 +50,13 @@
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a href="/supplies/<%= supply.id %>" class="card-footer-item">View</a>
+                        <a href="/supplies/<%= supply.id %>" class="card-footer-item has-text-primary">View</a>
                     </footer>
                 </div>
             </div>
             <% end %>
+            </div>
+            </div>
 
         </div>
     </section>

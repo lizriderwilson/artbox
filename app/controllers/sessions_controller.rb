@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
     get '/login' do
         if logged_in?
-            redirect to '/supplies'
+            redirect to "/users/#{current_user.slug}"
         else
             erb :"/users/login"
         end

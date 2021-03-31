@@ -3,7 +3,7 @@
     <!-- Breadcrumb Navigation -->
     <nav class="breadcrumb mt-2" aria-label="breadcrumbs">
     <ul>
-        <li><a href="/">Home</a></li>
+        <li><a class="has-text-primary" href="/">Home</a></li>
         <li class="is-active"><a href="#" aria-current="page">Users</a></li>
     </ul>
     </nav>
@@ -13,7 +13,7 @@
     <section class="section">
         <table class="table is-striped is-fullwidth">
             <tbody>
-            <% User.all.each do |user| %>
+            <% User.all.reverse.first(20).each do |user| %>
                 <tr>
                     <td>
                         <a class="has-text-grey" href="/users/<%= user.slug %>">
@@ -24,7 +24,7 @@
                         </a>
                     </td>
                     <td>
-                        <p><%= user.supplies.count %> Supplies</p>
+                        <p><%= user.supplies.count %> Supplies in <%= user.categories.count %> Categories</p>
                     </td>
                 </tr>
             <% end %>

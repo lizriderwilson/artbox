@@ -3,10 +3,10 @@
     <!-- Breadcrumb Navigation -->
     <nav class="breadcrumb mt-2 mb-5" aria-label="breadcrumbs">
     <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/users">Users</a></li>
-        <li><a href="/users/<%= @user.slug %>"><%= @user.username %>'s Profile</a></li>
-        <li><a href="/users/<%= @user.slug %>/supplies"><%= @user.username %>'s Supplies</a></li>
+        <li><a class="has-text-primary" href="/">Home</a></li>
+        <li><a class="has-text-primary" href="/users">Users</a></li>
+        <li><a class="has-text-primary" href="/users/<%= @user.slug %>"><%= @user.username %>'s Profile</a></li>
+        <li><a class="has-text-primary" href="/users/<%= @user.slug %>/supplies"><%= @user.username %>'s Supplies</a></li>
         <li class="is-active"><a aria-current="page" href="#"><%= @category.name %></a></li>
     </ul>
     </nav>
@@ -25,7 +25,7 @@
                     <% @user.categories.all.each do |category| %>
                         <li><a 
                         <% if category.name == @category.name %>
-                        class="is-active" 
+                        class="is-active has-background-primary" 
                         <% end %> href="/categories/<%= category.slug %>"><%= category.name %></a></li>
                     <% end %>
                     </ul>
@@ -52,10 +52,10 @@
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a href="/supplies/<%= supply.id %>" class="card-footer-item">View</a>
+                        <a href="/supplies/<%= supply.id %>" class="card-footer-item has-text-primary">View</a>
                         <% if supply.user == current_user %>
-                        <a href="/supplies/<%= supply.id %>/edit" class="card-footer-item">Edit</a>
-                        <a href="/supplies/<%= supply.id %>/delete" class="card-footer-item">Delete</a>
+                        <a href="/supplies/<%= supply.id %>/edit" class="card-footer-item has-text-primary">Edit</a>
+                        <a href="/supplies/<%= supply.id %>/delete" class="card-footer-item has-text-primary">Delete</a>
                         <% end %>
                     </footer>
                 </div>

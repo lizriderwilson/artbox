@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         if !logged_in?
             erb :"users/new"
         else
-            redirect to '/supplies'
+            redirect to "/users/#{current_user.slug}"
         end
     end
 
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
             @user = User.new(params[:user])
             if @user.save
                 session[:user_id] = @user.id
-                redirect to "/supplies"
+                redirect to "/users/#{@user.slug}"
             else
                 redirect to "/signup"
             end

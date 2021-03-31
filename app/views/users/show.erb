@@ -3,16 +3,24 @@
     <!-- Breadcrumb Navigation -->
     <nav class="breadcrumb mt-2 mb-4" aria-label="breadcrumbs">
     <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/users">Users</a></li>
-        <li class="is-active"><a aria-current="page" href="#"><%= @user.username %>'s Profile</a></li>
+        <li><a class="has-text-primary" href="/">Home</a></li>
+        <li><a class="has-text-primary" href="/users">Users</a></li>
+        <li class="is-active"><a aria-current="page" href="#">
+            <% if @user == current_user %>
+            Your Profile
+            <% else %>
+            <%= @user.username %>'s Profile
+            <% end %>
+        </a></li>
     </ul>
     </nav>
 
     <div class="has-text-centered my-2">
         <h2 class="title">
             <% if @user == current_user %>
-            Hi there, <%= @user.username %>!
+            Hi there, <span class="icon mx-2">
+                        <i class="<%= @user.icon %>"></i>
+                    </span><%= @user.username %>!
             <% else %>
             <%= @user.username %>
             <% end %>
@@ -59,35 +67,45 @@
             <div class="column p-5">
                 <div class="level">
                     <h3 class="is-size-3 has-text-weight-semibold">Recent Supplies</h3>
-                    <div class="level-item hast-text centered"><p class="is-size-6"><a href="<%= @user.slug %>/supplies/">View All</a></p></div>
-                    <div class="level-item hast-text centered"><p class="is-size-6"><a href="/supplies/new">Create New</a></p></div>
+                    <div class="level-item hast-text centered"><p class="is-size-6"><a class="has-text-primary" href="<%= @user.slug %>/supplies/">View All</a></p></div>
+                    <div class="level-item hast-text centered"><p class="is-size-6"><a class="has-text-primary" href="/supplies/new">Create New</a></p></div>
                 </div>
                 <div class="columns is-multiline">
-                    <% @user.supplies.reverse.first(6).each do |supply| %>
-                        <div class="column is-4-widescreen is-6-tablet">
-                            <div class="card">
-                                <header class="card-header">
-                                    <p class="card-header-title"><%= supply.name %></p>
-                                </header>
-                                <div class="card-image">
-                                    <figure class="image is">
-                                        <img src="https://via.placeholder.com/150x100.png" alt="Placeholder Image">
-                                    </figure>
-                                </div>
-                                <div class="card-content">
-                                    <div class="content">
-                                        <p><%= supply.description %></p>
-                                    </div>
-                                </div>
-                                <footer class="card-footer">
-                                    <a href="/supplies/<%= supply.id %>" class="card-footer-item">View</a>
-                                <% if supply.user == current_user %>
-                                    <a href="/supplies/<%= supply.id %>/edit" class="card-footer-item">Edit</a>
-                                    <a href="/supplies/<%= supply.id %>/delete" class="card-footer-item">Delete</a>
-                                <% end %>
-                                </footer>
-                            </div>
+                    <% if @user.supplies.count == 0 %>
+                        <div class="column has-text-centered py-6 mt-2 notification is-primary">
+                        <% if @user == current_user %>
+                            <p>You don't have any supplies! Go add some!</p>
+                        <% else %>
+                            <p>This user hasn't added any supplies yet.</p>
+                        <% end %>
                         </div>
+                    <% else %>
+                        <% @user.supplies.reverse.first(6).each do |supply| %>
+                            <div class="column is-4-widescreen is-6-tablet">
+                                <div class="card">
+                                    <header class="card-header">
+                                        <p class="card-header-title"><%= supply.name %></p>
+                                    </header>
+                                    <div class="card-image">
+                                        <figure class="image is">
+                                            <img src="https://via.placeholder.com/150x100.png" alt="Placeholder Image">
+                                        </figure>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="content">
+                                            <p><%= supply.description %></p>
+                                        </div>
+                                    </div>
+                                    <footer class="card-footer">
+                                        <a href="/supplies/<%= supply.id %>" class="card-footer-item has-text-primary">View</a>
+                                    <% if supply.user == current_user %>
+                                        <a href="/supplies/<%= supply.id %>/edit" class="card-footer-item has-text-primary">Edit</a>
+                                        <a href="/supplies/<%= supply.id %>/delete" class="card-footer-item has-text-primary">Delete</a>
+                                    <% end %>
+                                    </footer>
+                                </div>
+                            </div>
+                        <% end %>
                     <% end %>
                 </div>
             </div>

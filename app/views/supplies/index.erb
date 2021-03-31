@@ -1,4 +1,13 @@
-<div class="container pt-6">
+<div class="container">
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb mt-2 mb-5" aria-label="breadcrumbs">
+    <ul>
+        <li><a class="has-text-primary" href="/">Home</a></li>
+        <li class="is-active"><a aria-current="page" href="#">Supplies</a></li>
+    </ul>
+    </nav>
+
     <h2 class="title has-text-centered">Recent Supplies</h2>
 
     <section class="section">
@@ -37,7 +46,7 @@
                                 </div>
                             </div>
                             <footer class="card-footer">
-                                <a href="/supplies/<%= supply.id %>" class="card-footer-item">View</a>
+                                <a href="/supplies/<%= supply.id %>" class="card-footer-item has-text-primary">View</a>
                             </footer>
                         </div>
                     </div>

@@ -1,300 +1,288 @@
-<div class="container pt-6">
+<div class="container">
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb mt-2 mb-4" aria-label="breadcrumbs">
+    <ul>
+        <li><a class="has-text-primary" href="/">Home</a></li>
+        <li><a class="has-text-primary" href="/users">Users</a></li>
+        <li><a class="has-text-primary" href="/users/<%= @user.slug %>">Your Profile</a></li>
+        <li class="is-active"><a aria-current="page" href="#">Edit</a></li>
+    </ul>
+    </nav>
+
     <h2 class="title has-text-centered">Edit Profile</h2>
 
             <!-- FORM -->
-    <form action="/users/<%= @user.slug %>" method="POST">
-    <input type="hidden" id="hidden" name="_method" value="patch">
-
-        <div class="columns is-centered has-background-primary-light box">
-
-            <div class="column m-4">
-
-                <!-- name -->
-                <div class="field">
-                    <label class="label" for="name">Name:</label>
-                    <div class="control has-icons-left">
-                        <input class="input" type="text" name="user[name]" id="name" value="<%= @user.name %>">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-signature"></i>
-                        </span>
+    <div class="my-6">
+        <form action="/users/<%= @user.slug %>" method="POST">
+        <input type="hidden" id="hidden" name="_method" value="patch">
+            <div class="columns is-centered has-background-primary-light box">
+                <div class="column m-4">
+                    <!-- name -->
+                    <div class="field">
+                        <label class="label" for="name">Name:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" name="user[name]" id="name" value="<%= @user.name %>">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-signature"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- username -->
+                    <div class="field">
+                        <label class="label" for="username">Username:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" name="user[username]" id="username" value="<%= @user.username %>">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- email -->
+                    <div class="field">
+                        <label class="label" for="email">Email Address:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="email" name="user[email]" id="email" value="<%= @user.email %>">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- password -->
+                    <div class="field">
+                        <label class="label" for="password">Password:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="password" name="user[password]" id="password" placeholder="Current or new password">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- confirm password -->
+                    <div class="field">
+                        <label class="label" for="password_confirmation">Confirm Password:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="password" name="user[password_confirmation]" id="password_confirmation" placeholder="Confrim password">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
                     </div>
                 </div>
-
-                <!-- username -->
-                <div class="field">
-                    <label class="label" for="username">Username:</label>
-                    <div class="control has-icons-left">
-                        <input class="input" type="text" name="user[username]" id="username" value="<%= @user.username %>">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
+                <div class="column m-4">
+                    <!-- location -->
+                    <div class="field">
+                        <label class="label" for="location">Location:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" name="user[location]" id="location" value="<%= @user.location %>">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-globe-americas"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- twitter -->
+                    <div class="field">
+                        <label class="label" for="twitter">Twitter:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" name="user[twitter]" id="twitter"
+                            <% if @user.twitter %>
+                                value="<%= @user.twitter %>"
+                            <% else %>
+                                placeholder="@"
+                            <% end %>
+                            >
+                            <span class="icon is-small is-left">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- instagram -->
+                    <div class="field">
+                        <label class="label" for="instagram">Instagram:</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="text" name="user[instagram]" id="instagram"
+                            <% if @user.instagram %>
+                                value="<%= @user.instagram %>"
+                            <% else %>
+                                placeholder="@"
+                            <% end %>>
+                            <span class="icon is-small is-left">
+                                <i class="fab fa-instagram"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Bio -->
+                    <div class="field">
+                        <label class="label" for="bio">Bio:</label>
+                        <div class="control">
+                            <textarea class="textarea" type="textarea" name="user[bio]" id="bio"><%= @user.bio %></textarea>
+                        </div>
                     </div>
                 </div>
-
-                <!-- email -->
-                <div class="field">
-                    <label class="label" for="email">Email Address:</label>
-                    <div class="control has-icons-left">
-                        <input class="input" type="email" name="user[email]" id="email" value="<%= @user.email %>">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- password -->
-
-                <div class="field">
-                    <label class="label" for="password">Password:</label>
-                    <div class="control has-icons-left">
-                        <input class="input" type="password" name="user[password]" id="password" placeholder="Current or new password">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- confirm password -->
-                <div class="field">
-                    <label class="label" for="password_confirmation">Confirm Password:</label>
-                    <div class="control has-icons-left">
-                        <input class="input" type="password" name="user[password_confirmation]" id="password_confirmation" placeholder="Confrim password">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="column m-4">
-                <!-- location -->
-                <div class="field">
-                    <label class="label" for="location">Location:</label>
-                    <div class="control has-icons-left">
-                        <input class="input" type="text" name="user[location]" id="location" value="<%= @user.location %>">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-globe-americas"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- twitter -->
-                <div class="field">
-                    <label class="label" for="twitter">Twitter:</label>
-                    <div class="control has-icons-left">
-                        <input class="input" type="text" name="user[twitter]" id="twitter"
-                        <% if @user.twitter %>
-                            value="<%= @user.twitter %>"
-                        <% else %>
-                            placeholder="@"
-                        <% end %>
-                        >
-                        <span class="icon is-small is-left">
-                            <i class="fab fa-twitter"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- instagram -->
-                <div class="field">
-                    <label class="label" for="instagram">Instagram:</label>
-                    <div class="control has-icons-left">
-                        <input class="input" type="text" name="user[instagram]" id="instagram"
-                        <% if @user.instagram %>
-                            value="<%= @user.instagram %>"
-                        <% else %>
-                            placeholder="@"
-                        <% end %>>
-                        <span class="icon is-small is-left">
-                            <i class="fab fa-instagram"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Bio -->
-                <div class="field">
-                    <label class="label" for="bio">Bio:</label>
+                <div class="column m-4 is-flex is-flex-direction-column is-justify-content-space-evenly has-text-centered">
+                    <p class="title is-5">
+                        Choose an icon to represent you!
+                    </p>
+        
                     <div class="control">
-                        <textarea class="textarea" type="textarea" name="user[bio]" id="bio"><%= @user.bio %></textarea>
+                            <div class="columns is-centered">
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-paint-brush"
+                                        <% if @user.icon == "fas fa-paint-brush" %>
+                                        checked
+                                        <% end %>
+                                        >
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-paint-brush"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-pencil-alt"
+                                        <% if @user.icon == "fas fa-pencil-alt" %>
+                                        checked
+                                        <% end %>
+                                        >
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-pencil-alt"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-pen-fancy"
+                                        <% if @user.icon == "fas fa-pen-fancy" %>
+                                        checked
+                                        <% end %>
+                                        >
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-pen-fancy"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="columns is-centered">
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-highlighter"
+                                        <% if @user.icon == "fas fa-highlighter" %>
+                                        checked
+                                        <% end %>
+                                        >
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-highlighter"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-palette"
+                                        <% if @user.icon == "fas fa-palette" %>
+                                        checked
+                                        <% end %>
+                                        >
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-palette"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-spray-can"
+                                        <% if @user.icon == "fas fa-spray-can" %>
+                                        checked
+                                        <% end %>
+                                        >
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-spray-can"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="columns is-centered">
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-cut"
+                                        <% if @user.icon == "fas fa-cut" %>
+                                        checked
+                                        <% end %>
+                                        >
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-cut"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-tape"
+                                        <% if @user.icon == "fas fa-tape" %>
+                                        checked
+                                        <% end %>
+                                        >
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-tape"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                    <input type="radio" name="user[icon]" value="fas fa-book"
+                                        <% if @user.icon == "fas fa-book" %>
+                                        checked
+                                        <% end %>
+                                        >
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-book"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="columns is-centered">
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-laptop"
+                                        <% if @user.icon == "fas fa-laptop" %>
+                                        checked
+                                        <% end %>
+                                        >
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-laptop"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-tablet-alt"
+                                        <% if @user.icon == "fas fa-tablet-alt" %>
+                                        checked
+                                        <% end %>
+                                        >
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-tablet-alt"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="column is-narrow">
+                                    <label class="radio">
+                                        <input type="radio" name="user[icon]" value="fas fa-bezier-curve"
+                                        <% if @user.icon == "fas fa-bezier-curve" %>
+                                        checked
+                                        <% end %>
+                                        >
+                                        <span class="icon is-medium">
+                                            <i class="fa-2x fas fa-bezier-curve"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
                     </div>
                 </div>
-
+                <div class="section"></div>
             </div>
-
-            <div class="column m-4 is-flex is-flex-direction-column is-justify-content-space-evenly has-text-centered">
-
-                <p class="title is-5">
-                    Choose an icon to represent you!
-                </p>
-            
-                <div class="control">
-
-                        <div class="columns is-centered">
-                            <div class="column is-narrow">
-                                <label class="radio">
-                                    <input type="radio" name="user[icon]" value="fas fa-paint-brush"
-                                    <% if @user.icon == "fas fa-paint-brush" %>
-                                    checked
-                                    <% end %>
-                                    >
-                                    <span class="icon is-medium">
-                                        <i class="fa-2x fas fa-paint-brush"></i>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="column is-narrow">
-                                <label class="radio">
-                                    <input type="radio" name="user[icon]" value="fas fa-pencil-alt"
-                                    <% if @user.icon == "fas fa-pencil-alt" %>
-                                    checked
-                                    <% end %>
-                                    >
-                                    <span class="icon is-medium">
-                                        <i class="fa-2x fas fa-pencil-alt"></i>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="column is-narrow">
-                                <label class="radio">
-                                    <input type="radio" name="user[icon]" value="fas fa-pen-fancy"
-                                    <% if @user.icon == "fas fa-pen-fancy" %>
-                                    checked
-                                    <% end %>
-                                    >
-                                    <span class="icon is-medium">
-                                        <i class="fa-2x fas fa-pen-fancy"></i>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="columns is-centered">
-                            <div class="column is-narrow">
-                                <label class="radio">
-                                    <input type="radio" name="user[icon]" value="fas fa-highlighter"
-                                    <% if @user.icon == "fas fa-highlighter" %>
-                                    checked
-                                    <% end %>
-                                    >
-                                    <span class="icon is-medium">
-                                        <i class="fa-2x fas fa-highlighter"></i>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="column is-narrow">
-                                <label class="radio">
-                                    <input type="radio" name="user[icon]" value="fas fa-palette"
-                                    <% if @user.icon == "fas fa-palette" %>
-                                    checked
-                                    <% end %>
-                                    >
-                                    <span class="icon is-medium">
-                                        <i class="fa-2x fas fa-palette"></i>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="column is-narrow">
-                                <label class="radio">
-                                    <input type="radio" name="user[icon]" value="fas fa-spray-can"
-                                    <% if @user.icon == "fas fa-spray-can" %>
-                                    checked
-                                    <% end %>
-                                    >
-                                    <span class="icon is-medium">
-                                        <i class="fa-2x fas fa-spray-can"></i>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="columns is-centered">
-                            <div class="column is-narrow">
-                                <label class="radio">
-                                    <input type="radio" name="user[icon]" value="fas fa-cut"
-                                    <% if @user.icon == "fas fa-cut" %>
-                                    checked
-                                    <% end %>
-                                    >
-                                    <span class="icon is-medium">
-                                        <i class="fa-2x fas fa-cut"></i>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="column is-narrow">
-                                <label class="radio">
-                                    <input type="radio" name="user[icon]" value="fas fa-tape"
-                                    <% if @user.icon == "fas fa-tape" %>
-                                    checked
-                                    <% end %>
-                                    >
-                                    <span class="icon is-medium">
-                                        <i class="fa-2x fas fa-tape"></i>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="column is-narrow">
-                                <label class="radio">
-                                <input type="radio" name="user[icon]" value="fas fa-book"
-                                    <% if @user.icon == "fas fa-book" %>
-                                    checked
-                                    <% end %>
-                                    >
-                                    <span class="icon is-medium">
-                                        <i class="fa-2x fas fa-book"></i>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="columns is-centered">
-                            <div class="column is-narrow">
-                                <label class="radio">
-                                    <input type="radio" name="user[icon]" value="fas fa-laptop"
-                                    <% if @user.icon == "fas fa-laptop" %>
-                                    checked
-                                    <% end %>
-                                    >
-                                    <span class="icon is-medium">
-                                        <i class="fa-2x fas fa-laptop"></i>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="column is-narrow">
-                                <label class="radio">
-                                    <input type="radio" name="user[icon]" value="fas fa-tablet-alt"
-                                    <% if @user.icon == "fas fa-tablet-alt" %>
-                                    checked
-                                    <% end %>
-                                    >
-                                    <span class="icon is-medium">
-                                        <i class="fa-2x fas fa-tablet-alt"></i>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="column is-narrow">
-                                <label class="radio">
-                                    <input type="radio" name="user[icon]" value="fas fa-bezier-curve"
-                                    <% if @user.icon == "fas fa-bezier-curve" %>
-                                    checked
-                                    <% end %>
-                                    >
-                                    <span class="icon is-medium">
-                                        <i class="fa-2x fas fa-bezier-curve"></i>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <input class="button is-primary mt-2 has-text-centered" type="submit" value="Edit Profile">
-
-    </form>
+            <input class="button is-primary mt-2 has-text-centered" type="submit" value="Edit Profile">
+        </form>
+    </div>
 
 </div>
