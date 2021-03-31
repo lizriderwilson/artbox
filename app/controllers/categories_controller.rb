@@ -5,10 +5,15 @@ class CategoriesController < ApplicationController
     redirect to "/supplies"
   end
 
-  # GET: /categories/5
   get "/categories/:slug" do
     @category = Category.find_by_slug(params[:slug])
     erb :"/categories/show"
+  end
+
+  get "/users/:slug/:category_slug" do
+    @user = User.find_by_slug(params[:slug])
+    @category = Category.find_by_slug(params[:category_slug])
+    erb :"/categories/user_index"
   end
 
   # GET: /categories/5/edit

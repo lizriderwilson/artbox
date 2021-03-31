@@ -1,0 +1,68 @@
+<div class="container">
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb mt-2 mb-5" aria-label="breadcrumbs">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/users">Users</a></li>
+        <li><a href="/users/<%= @user.slug %>"><%= @user.username %>'s Profile</a></li>
+        <li><a href="/users/<%= @user.slug %>/supplies"><%= @user.username %>'s Supplies</a></li>
+        <li class="is-active"><a aria-current="page" href="#"><%= @category.name %></a></li>
+    </ul>
+    </nav>
+
+    <h2 class="title has-text-centered"><%= @user.username %>'s <%= @category.name %></h2>
+
+    <section class="section">
+        <div class="columns is-multiline">
+
+            <div class="column is-3">
+                <aside class="menu">
+                    <p class="menu-label">
+                        Categories
+                    </p>
+                    <ul class="menu-list">
+                    <% @user.categories.all.each do |category| %>
+                        <li><a 
+                        <% if category.name == @category.name %>
+                        class="is-active" 
+                        <% end %> href="/categories/<%= category.slug %>"><%= category.name %></a></li>
+                    <% end %>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="column">
+
+            <div class="columns is-multiline">
+            <% @category.supplies.all.limit(2).each do |supply| %>
+            <div class="column is-one-fifth-widescreen is-one-third-tablet">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title"><%= supply.name %></p>
+                    </header>
+                    <div class="card-image">
+                        <figure class="image is">
+                            <img src="https://via.placeholder.com/150x100.png" alt="Placeholder Image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <p><%= supply.description %></p>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="/supplies/<%= supply.id %>" class="card-footer-item">View</a>
+                        <% if supply.user == current_user %>
+                        <a href="/supplies/<%= supply.id %>/edit" class="card-footer-item">Edit</a>
+                        <a href="/supplies/<%= supply.id %>/delete" class="card-footer-item">Delete</a>
+                        <% end %>
+                    </footer>
+                </div>
+            </div>
+            <% end %>
+            </div>
+            </div>
+        </div>
+    </section>
+</div>

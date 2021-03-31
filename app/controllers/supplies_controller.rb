@@ -34,6 +34,11 @@ class SuppliesController < ApplicationController
     end
   end
 
+  get "/users/:slug/supplies" do
+    @user = User.find_by_slug(params[:slug])
+    erb :"/supplies/user_index"
+  end
+
   # show
   get "/supplies/:id" do
     @supply = Supply.find(params[:id])
@@ -86,5 +91,5 @@ class SuppliesController < ApplicationController
       redirect to "/supplies"
     end
   end
-  
+
 end
