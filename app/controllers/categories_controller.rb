@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   get "/categories/:slug" do
+    @categories = Category.all
     @category = Category.find_by_slug(params[:slug])
     erb :"/categories/show"
   end

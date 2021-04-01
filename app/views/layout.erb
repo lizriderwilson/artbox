@@ -1,97 +1,111 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>ArtBox | A Digital Supply Library for Artists</title>
-		<link rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css">
-		<script defer src="https://use.fontawesome.com/releases/v5.6.0/js/all.js"></script>
-        <!-- <link rel="stylesheet" href="styles/debug.css"> -->
-		<style>
-            /* HIDE RADIO */
-            [type=radio] { 
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-            }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ArtBox | A Digital Supply Library for Artists</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.6.0/js/all.js"
+    ></script>
+    <!-- <link rel="stylesheet" href="styles/debug.css"> -->
+    <style>
+      /* HIDE RADIO */
+      [type="radio"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
 
-            /* IMAGE STYLES */
-            [type=radio] + span {
-            cursor: pointer;
-            }
+      /* IMAGE STYLES */
+      [type="radio"] + span {
+        cursor: pointer;
+      }
 
-            /* CHECKED STYLES */
-            [type=radio]:checked + span {
-                color: hsl(171, 100%, 41%);
-            }
+      /* CHECKED STYLES */
+      [type="radio"]:checked + span {
+        color: hsl(171, 100%, 41%);
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar has-shadow is-white"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="container">
+        <div class="navbar-brand py-4">
+          <a class="navbar-item" href="/">
+            <img
+              src="/images/ArtBoxLogo.png"
+              alt="ArtBox Site Logo"
+              style="max-height: 40px"
+            />
+          </a>
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-start ml-4">
+            <a href="/users" class="navbar-item">Users</a>
+            <a href="/supplies" class="navbar-item">Supplies</a>
+            <a class="navbar-item">About</a>
+            <a class="navbar-item">FAQ</a>
+          </div>
 
-		</style>
-	</head>
-	<body>
-
-        <nav class="navbar has-shadow is-white" role="navigation" aria-label="main navigation">
-            <div class="container">
-                <div class="navbar-brand py-4">
-                    <a class="navbar-item" href="/">
-                    <img src="/images/ArtBoxLogo.png" alt="ArtBox Site Logo" style="max-height: 40px">
-                    </a>
-                </div>
-                <div class="navbar-menu">
-                    <div class="navbar-start ml-4">
-                        <a href="/users" class="navbar-item">Users</a>
-                        <a href="/supplies" class="navbar-item">Supplies</a>
-                        <a class="navbar-item">About</a>
-                        <a class="navbar-item">FAQ</a>
-                    </div>
-
-                    <div class="navbar-end">
-                        <% if current_user %>
-                            <div class="navbar-item has-dropdown is-hoverable">
-                                <a href="/users/<%= current_user.slug %>" class="navbar-link is-arrowless">
-                                    <span class="icon">
-                                        <i class="<%= current_user.icon %>"></i>
-                                    </span>
-                                    <span><%= current_user.username %></span>
-                                </a>
-                                <div class="navbar-dropdown">
-                                    <a href="/users/<%= current_user.slug %>" class="navbar-item">Profile</a>
-                                    <a href="/supplies/new" class="navbar-item">New Supply</a>
-                                    <hr class="navbar-divider">
-                            <a class="navbar-item" href="/logout">Log Out</a>
-                                </div>
-                            </div>
-                        <% else %>
-                            <a class="navbar-item" href="/login">Login</a>
-                            <a class="navbar-item" href="/signup">Sign Up</a>
-                        <% end %>
-                    </div>
-                </div>
+          <div class="navbar-end">
+            <% if current_user %>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a
+                href="/users/<%= current_user.slug %>"
+                class="navbar-link is-arrowless"
+              >
+                <span class="icon">
+                  <i class="<%= current_user.icon %>"></i>
+                </span>
+                <span><%= current_user.username %></span>
+              </a>
+              <div class="navbar-dropdown">
+                <a href="/users/<%= current_user.slug %>" class="navbar-item"
+                  >Profile</a
+                >
+                <a href="/supplies/new" class="navbar-item">New Supply</a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item" href="/logout">Log Out</a>
+              </div>
             </div>
-        </nav>
+            <% else %>
+            <a class="navbar-item" href="/login">Login</a>
+            <a class="navbar-item" href="/signup">Sign Up</a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-        <div class="container py-4"><%= yield %></div>
+    <div class="container py-4"><%= yield %></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-    
-    $(document).ready(function() {
+      $(document).ready(function () {
         $("#new_category_name").prop("disabled", true);
         $("#new_category_name").hide();
-        $("#category_select").change(function() {
-            console.log($("option:checked").text());
-            if ($("option:checked").text() == "--New Category--") {
-                $("#new_category_name").show();
-                $("#new_category_name").prop("disabled", false);
-                $("option:checked").prop("disabled", true);
-            } else {
-                $("#new_category_name").prop("disabled", true);
-                $("#new_category_name").hide();
-            }
+        $("#category_select").change(function () {
+          console.log($("option:checked").text());
+          if ($("option:checked").text() == "--New Category--") {
+            $("#new_category_name").show();
+            $("#new_category_name").prop("disabled", false);
+            $("option:checked").prop("disabled", true);
+          } else {
+            $("#new_category_name").prop("disabled", true);
+            $("#new_category_name").hide();
+          }
         });
-    });
-
+      });
     </script>
-	</body>
+  </body>
 </html>

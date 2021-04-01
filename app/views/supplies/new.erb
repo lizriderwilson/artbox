@@ -34,7 +34,7 @@
                             <div class="select level-left" id="category_select">
                                 <select name="category[name]" id="category_name">
                                     <option value="" disabled selected>Select</option>
-                                    <% Category.all.each do |category| %>
+                                    <% @categories.each do |category| %>
                                     <option value="<%= category.name %>"><%= category.name %></option>
                                     <% end %>
                                     <option value="" id="new_category">--New Category--</option>

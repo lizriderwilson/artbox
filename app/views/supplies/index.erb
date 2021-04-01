@@ -19,7 +19,7 @@
                         Categories
                     </p>
                     <ul class="menu-list">
-                    <% Category.all.each do |category| %>
+                    <% @categories.each do |category| %>
                         <li><a href="/categories/<%= category.slug %>"><%= category.name %></a></li>
                     <% end %>
                     </ul>
@@ -29,7 +29,7 @@
             <div class="column">
 
             <div class="columns is-multiline">
-                <% Supply.all.limit(16).each do |supply| %>
+                <% @supplies.limit(16).reverse.each do |supply| %>
                     <div class="column is-one-fifth-widescreen is-one-third-tablet">
                         <div class="card">
                             <header class="card-header">

@@ -2,12 +2,15 @@ class SuppliesController < ApplicationController
 
   # index
   get "/supplies" do
+    @supplies = Supply.all
+    @categories = Category.all
     erb :"/supplies/index"
   end
 
   # new
   get "/supplies/new" do
     if logged_in?
+      @categories = Category.all
       erb :"/supplies/new"
     else
       redirect to '/login'
@@ -50,9 +53,10 @@ class SuppliesController < ApplicationController
     if logged_in?
       @supply = Supply.find(params[:id])
         if @supply.user == current_user
-            erb :"supplies/edit"
+          @categories = Category.all
+          erb :"supplies/edit"
         else
-            redirect to "/supplies/#{params[:id]}"
+          redirect to "/supplies/#{params[:id]}"
         end
     else
         redirect to "/supplies/#{params[:id]}"
@@ -63,7 +67,6 @@ class SuppliesController < ApplicationController
   # update
   patch "/supplies/:id" do
     if params[:supply][:name] && params[:category][:name]
-      binding.pry
       @supply = Supply.find_by(id: params[:id])
       if @supply.user == current_user
           @category = Category.find_or_create_by(name: params[:category][:name])

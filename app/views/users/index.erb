@@ -13,7 +13,7 @@
     <section class="section">
         <table class="table is-striped is-fullwidth">
             <tbody>
-            <% User.all.reverse.first(20).each do |user| %>
+            <% @users.reverse.first(20).each do |user| %>
                 <tr>
                     <td>
                         <a class="has-text-grey" href="/users/<%= user.slug %>">
