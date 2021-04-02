@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     set :method_override, true
     enable :sessions
-    set :session_secret, "hello" #ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
+    set :session_secret, ENV['SESSION_PASSWORD']
     set :strict_paths, false
   end
 

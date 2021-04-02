@@ -95,7 +95,6 @@
         $("#new_category_name").prop("disabled", true);
         $("#new_category_name").hide();
         $("#category_select").change(function () {
-          console.log($("option:checked").text());
           if ($("option:checked").text() == "--New Category--") {
             $("#new_category_name").show();
             $("#new_category_name").prop("disabled", false);
