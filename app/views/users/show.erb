@@ -68,7 +68,9 @@
                 <div class="level">
                     <h3 class="is-size-3 has-text-weight-semibold">Recent Supplies</h3>
                     <div class="level-item hast-text centered"><p class="is-size-6"><a class="has-text-primary" href="<%= @user.slug %>/supplies/">View All</a></p></div>
+                    <% if @user == current_user %>
                     <div class="level-item hast-text centered"><p class="is-size-6"><a class="has-text-primary" href="/supplies/new">Create New</a></p></div>
+                    <% end %>
                 </div>
                 <div class="columns is-multiline">
                     <% if @user.supplies.count == 0 %>
