@@ -1,11 +1,11 @@
-ENV['SINATRA_ENV'] ||= "development"
+ENV['SINATRA_ENV'] ||= "production"
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
-if ENV['SINATRA_ENV'] == "development"
-    require_relative "../session"
-end
+# if ENV['SINATRA_ENV'] == "development"
+#     require_relative "../session"
+# end
 
 set :database, {:adapter =>'sqlite3', :database=>"db/#{ENV['SINATRA_ENV']}.sqlite"}
 
