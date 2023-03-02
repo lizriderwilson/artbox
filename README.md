@@ -1,6 +1,6 @@
 # ArtBox
 
-ArtBox is a MVC CRUD application written using the Sinatra framework. It is a web application where users can sign up for accounts and create a digital library of their personal art supply collection.
+ArtBox is a MVC CRUD application written using the Sinatra framework. It is a web application where users can sign up for accounts and create a digital library of their personal art supply collection. Supplies exist in various categories that can be used to organize your collection
 
 ## Contributing
 
